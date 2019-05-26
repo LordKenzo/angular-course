@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+// Attenzione: le animazioni non sono "protette" dallo shadow dom simulato da Angular, per questo il nome deve essere unico in tutta l'applicazione.
+@keyframes router-load-message-animation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.router-load-message {
+  // Avendo un delay, le connessioni più veloci non vedranno il messaggio di loading
+  animation-delay: 100ms;
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-name: router-load-message-animation;
+  background-color: #f0db9c;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0px 2px 2px fade(#000000, 20%);
+  color: #424242;
+  font-family: monospace, sans-serif;
+  font-size: 16px;
+  left: 50%;
+  padding: 15px 30px;
+  position: fixed;
+  text-transform: lowercase;
+  top: 10px;
+  transform: translateX(-50%);
+  z-index: 100;
+}
