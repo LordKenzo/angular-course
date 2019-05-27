@@ -2,11 +2,10 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
 import { ProductsService } from './products.service';
 
 @NgModule( {
-  declarations: [ProductsComponent],
+  declarations: [ProductsRoutingModule.components],
   imports: [
     CommonModule,
     ProductsRoutingModule
@@ -23,6 +22,12 @@ export class ProductsModule {
       ngModule: ProductsModule,
       // equivalente -> providers: [ProductsService],
       providers: [{provide: ProductsService, multi: false, useClass: ProductsService}]
+    };
+  }
+
+  static forChild(): ModuleWithProviders {
+    return {
+      ngModule: ProductsModule,
     };
   }
 

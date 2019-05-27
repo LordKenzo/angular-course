@@ -15,7 +15,7 @@ import { ProductsModule } from '../products/products.module';
       {path: '', component: CatalogComponent},
       {path: 'no-results', component: NoResultsComponent},
     ] ),
-    ProductsModule
+    ProductsModule.forChild()
   ],
   providers: []
 } )

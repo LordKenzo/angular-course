@@ -14,6 +14,7 @@ const routes: Routes = [
   exports: [RouterModule]
 } )
 export class ProductsRoutingModule {
+  static components = [ ProductsComponent ]
   constructor() {
     console.log( 'loaded Products Module Routing!' );
   }
