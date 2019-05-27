@@ -11,15 +11,20 @@ const routes = [
     path: '',
     component: LoginComponent,
     children: [
-      { path: 'signin', component: SignInComponent },
-      { path: 'lostpass', component: LostpassComponent },
-      { path: 'registration', component: RegistrationComponent },
-      { path: '', redirectTo: 'signin' },
+      {path: 'signin', component: SignInComponent},
+      {path: 'lostpass', component: LostpassComponent},
+      {path: 'registration', component: RegistrationComponent},
+      {path: '', redirectTo: 'signin'},
     ],
   },
 ];
-@NgModule({
+
+@NgModule( {
   declarations: [LoginComponent, SignInComponent, LostpassComponent, RegistrationComponent],
-  imports: [SharedModule, RouterModule.forChild(routes)],
-})
-export class LoginModule {}
+  imports: [SharedModule, RouterModule.forChild( routes )],
+} )
+export class LoginModule {
+  constructor() {
+    console.log( 'loaded Login Module!' );
+  }
+}

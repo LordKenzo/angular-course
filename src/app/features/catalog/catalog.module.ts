@@ -5,15 +5,22 @@ import { CatalogListComponent } from './components/catalog-list/catalog-list.com
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NoResultsComponent } from './no-results.component';
+import { ProductsModule } from '../products/products.module';
 
-@NgModule({
+@NgModule( {
   declarations: [CatalogComponent, CatalogFormComponent, CatalogListComponent, NoResultsComponent],
   imports: [
     SharedModule,
-    RouterModule.forChild([
-      { path: '', component: CatalogComponent },
-      { path: 'no-results', component: NoResultsComponent },
-    ]),
+    RouterModule.forChild( [
+      {path: '', component: CatalogComponent},
+      {path: 'no-results', component: NoResultsComponent},
+    ] ),
+    ProductsModule
   ],
-})
-export class CatalogModule {}
+  providers: []
+} )
+export class CatalogModule {
+  constructor() {
+    console.log( 'loaded Catalog Module!' );
+  }
+}
