@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { LoaderIndicatorComponent } from './loader-indicator/loader-indicator.component';
+import { throwIfAlreadLoaded } from './guards/import.guard';
 
 @NgModule( {
   declarations: [NavbarComponent, LoaderIndicatorComponent],
@@ -10,13 +11,7 @@ import { LoaderIndicatorComponent } from './loader-indicator/loader-indicator.co
   exports: [NavbarComponent, LoaderIndicatorComponent],
 } )
 export class CoreModule {
-  constructor(@Optional() @SkipSelf() core: CoreModule) {
-    if (!core) {
-      console.log( 'Costruisco il Core Module' );
-    } else {
-      console.log( 'Core Module già costruito' );
-      throw new Error( 'You cannot import Core Module twice or more!!!' )
-    }
-
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    throwIfAlreadLoaded(parentModule, 'CoreModule');
   }
 }
